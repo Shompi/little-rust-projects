@@ -1,5 +1,10 @@
 use core::panic;
 use std::io;
+
+enum MyErrors {
+    NotInteger,
+}
+
 /**
 
    This simple calculator will show a menu with different operations
@@ -10,22 +15,17 @@ use std::io;
 
    and just take in 2 numbers.
 */
-
-enum MyErrors {
-    NotInteger,
-}
-
-fn print_menu() {
-    print!("\nWelcome to SimpleCalculator!\n");
-    print!("Select your choice:\n\n");
-    print!("1) Add\n");
-    print!("2) Substract\n");
-    print!("3) Multiply\n");
-    print!("4) Divide\n\n");
-    print!("9) Exit application\n\n");
-}
-
 fn main() {
+    fn print_menu() {
+        print!("\nWelcome to SimpleCalculator!\n");
+        print!("Select your choice:\n\n");
+        print!("1) Add\n");
+        print!("2) Substract\n");
+        print!("3) Multiply\n");
+        print!("4) Divide\n\n");
+        print!("9) Exit application\n\n");
+    }
+
     // Main loop
     loop {
         print_menu();
@@ -78,15 +78,62 @@ fn add() {
 }
 
 fn substract() {
-    println!("This operation is not yet implemented.")
+    println!("Please enter the first integer: ");
+    match parse_number() {
+        Ok(num_a) => {
+            println!("Please enter the second number: ");
+            match parse_number() {
+                Ok(num_b) => {
+                    println!("The result of {num_a} - {num_b} equals: {}", num_a - num_b)
+                }
+                Err(_) => println!("An error occured during execution."),
+            }
+        }
+        Err(_) => println!("An error occured during execution."),
+    }
 }
 
 fn multiply() {
-    println!("This operation is not yet implemented.")
+    println!("Please enter your first integer number: ");
+
+    match parse_number() {
+        Ok(num_a) => {
+            println!("Please enter the second number: ");
+            match parse_number() {
+                Ok(num_b) => {
+                    println!("The result of {num_a} * {num_b} equals: {}", num_a * num_b);
+                }
+                Err(_) => println!(
+                    "There was an error during execution, you probably didn't enter an integer."
+                ),
+            }
+        }
+        Err(_) => {
+            println!("There was an error during execution, you probably didn't enter an integer.")
+        }
+    }
 }
 
 fn divide() {
-    println!("This operation is not yet implemented.")
+    println!("Please enter the first integer: ");
+    match parse_number() {
+        Ok(num_a) => {
+            println!("Please enter the second integer: ");
+            match parse_number() {
+                Ok(num_b) => {
+                    if num_b == 0 {
+                        println!("Error: Division by zero is not allowed.");
+                        return;
+                    }
+                    let result: f32 = num_a as f32 / num_b as f32;
+
+                    println!("The result of {num_a} devided by {num_b} equals: {result}",)
+                }
+                Err(_) => println!("There was an error reading this integer."),
+            }
+        }
+        Err(_) => println!("There was an error reading this integer."),
+    }
 }
 
 fn parse_number() -> Result<i32, MyErrors> {
