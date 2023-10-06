@@ -127,7 +127,7 @@ fn divide() {
                     }
                     let result: f32 = num_a as f32 / num_b as f32;
 
-                    println!("The result of {num_a} devided by {num_b} equals: {result}",)
+                    println!("The result of {num_a} divided by {num_b} equals: {result}",)
                 }
                 Err(_) => println!("There was an error reading this integer."),
             }

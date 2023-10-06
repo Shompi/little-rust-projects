@@ -5,7 +5,7 @@ An extremely simple calculator program with just 4 operations:
 * Add
 * Substract
 * Multiply
-* Devide
+* Division
 
 The program prompts the user with a menu to select the operation
 It only takes 2 numbers as inputs (Integers) and shows a result.
