@@ -1,12 +1,14 @@
 use rand::Rng;
 use std::cmp::Ordering;
 use std::io::{self, Write};
-use std::process::exit;
 
 fn main() {
-    let random_number = rand::thread_rng().gen_range(0..10);
-
+    let mut random_number: i32;
     loop {
+        println!("Generating random number...");
+        random_number = rand::thread_rng().gen_range(0..1000);
+        println!("Random number generated!");
+
         print!("Please enter your guess: ");
         let _ = io::stdout().flush();
         let mut guess = String::new();
