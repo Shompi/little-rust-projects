@@ -1,12 +1,14 @@
 use rand::Rng;
 use std::cmp::Ordering;
 use std::io::{self, Write};
+use std::thread::sleep;
+use std::time::Duration;
 
 fn main() {
     let mut random_number: i32;
     loop {
         println!("Generating random number...");
-        random_number = rand::thread_rng().gen_range(0..1000);
+        random_number = rand::thread_rng().gen_range(0..100_000);
         println!("Random number generated!");
 
         print!("Please enter your guess: ");
@@ -52,4 +54,5 @@ fn main() {
     }
 
     println!("The secret number was: {}", random_number);
+    sleep(Duration::from_millis(30_000));
 }
