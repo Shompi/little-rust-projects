@@ -1,3 +1,13 @@
+/**
+    This program takes the difference between vectors and stores it
+    in a new one.
+    EX: A: {1,2,3}, B: {3,4,5}
+    RESULT: {1,4,5}
+
+    Each element of each group that is not on the other group gets added to the result
+    vector
+ */
+
 fn main() {
     println!("Hello, world!");
     // Test 1
